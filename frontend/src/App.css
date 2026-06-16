@@ -1,0 +1,41 @@
+.card-img-top{
+  height: 220px;
+  object-fit: contain;
+}
+
+.product-detail-wrapper {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.product-image-box {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.product-image {
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.product-title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.product-price {
+  font-weight: 700;
+}
+
+.product-description {
+  line-height: 1.8;
+  color: #555;
+}
+
+.rating-box {
+  font-size: 1rem;
+}
