@@ -21,7 +21,7 @@ function Navbar() {
     {
       label: "Women",
       slug: "womens-clothing",
-    },
+    }
   ];
 
   return (
@@ -46,6 +46,9 @@ function Navbar() {
                 <NavLink className="nav-link"  to={ category.slug? `/category/${category.slug}`: "/"}>{category.label}</NavLink>
               </li>
             ))}
+            <li className="nav-item">
+              <NavLink className="nav-link"  to="/blog">Blog</NavLink>
+            </li>
           </ul>
         </div>
       </div>
