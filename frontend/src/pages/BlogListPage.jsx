@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { getBlogs, deleteBlog } from "../services/blogService";
 
 import BlogTable from "../components/BlogTable";
 
@@ -8,23 +9,21 @@ const BlogListPage = () => {
   const [blogs, setBlogs] = useState([]);
 
   const fetchBlogs = async () => {
-    try {
-      const res = await axios.get("http://localhost:4000/api/blogs");
-      setBlogs(res.data.data);
-    } catch (error) {
-      console.log(error);
-    }
+    const data = await getBlogs();
+    setBlogs(data);
   };
 
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this blog?")) return;
 
     try {
-      await axios.delete(`http://localhost:4000/api/blogs/${id}`);
-      toast.success("Blog deleted successfully");
+      await deleteBlog(id);
+
+      toast.success("Blog Deleted");
+
       fetchBlogs();
-    } catch (error) {
-      toast.error("Failed to delete blog");
+    } catch {
+      toast.error("Delete Failed");
     }
   };
 

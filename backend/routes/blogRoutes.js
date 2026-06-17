@@ -1,19 +1,19 @@
 const express = require("express");
 
 const {
-    createBlog,
-    getBlogs,
-    getBlogById,
-    updateBlog,
-    deleteBlog,
+  createBlog,
+  getBlogs,
+  getBlogById,
+  updateBlog,
+  deleteBlog,
 } = require("../controllers/blogController");
+const upload = require("../middleware/upload");
 
 const router = express.Router();
 
-router.post("/", createBlog);
+router.post("/", upload.single("image"), createBlog);
 router.get("/", getBlogs);
-router.get("/:id", getBlogById);
-router.put("/:id", updateBlog);
+router.put("/:id", upload.single("image"), updateBlog);
 router.delete("/:id", deleteBlog);
 
 module.exports = router;

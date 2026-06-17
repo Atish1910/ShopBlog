@@ -21,7 +21,7 @@ function Navbar() {
     {
       label: "Women",
       slug: "womens-clothing",
-    }
+    },
   ];
 
   return (
@@ -43,11 +43,18 @@ function Navbar() {
           <ul className="navbar-nav ms-auto">
             {categories.map((category) => (
               <li className="nav-item" key={category.slug}>
-                <NavLink className="nav-link"  to={ category.slug? `/category/${category.slug}`: "/"}>{category.label}</NavLink>
+                <NavLink
+                  className="nav-link"
+                  to={category.slug ? `/category/${category.slug}` : "/"}
+                >
+                  {category.label}
+                </NavLink>
               </li>
             ))}
             <li className="nav-item">
-              <NavLink className="nav-link"  to="/blog">Blog</NavLink>
+              <NavLink className="nav-link" to="/blog">
+                Blog
+              </NavLink>
             </li>
           </ul>
         </div>

@@ -1,6 +1,7 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function ProductCard({ product }) {
+const ProductCard = React.memo(({ product }) => {
   const navigate = useNavigate();
 
   const handleViewDetails = () => {
@@ -16,27 +17,18 @@ function ProductCard({ product }) {
       />
 
       <div className="card-body d-flex flex-column">
-        <h6 className="card-title">
-          {product.title}
-        </h6>
+        <h6 className="card-title">{product.title}</h6>
 
-        <p className="text-muted small">
-          {product.category}
-        </p>
+        <p className="text-muted small">{product.category}</p>
 
-        <h5 className="text-success">
-          ${product.price}
-        </h5>
+        <h5 className="text-success">${product.price}</h5>
 
-        <button
-          className="btn btn-primary mt-auto"
-          onClick={handleViewDetails}
-        >
+        <button className="btn btn-primary mt-auto" onClick={handleViewDetails}>
           View Details
         </button>
       </div>
     </div>
   );
-}
+});
 
 export default ProductCard;

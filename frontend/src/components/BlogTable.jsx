@@ -27,10 +27,11 @@ const BlogTable = ({ blogs, fetchBlogs, handleDelete }) => {
       );
 
       toast.success("Blog Updated");
+      await fetchBlogs();
 
-      fetchBlogs();
+      const modal = Modal.getInstance(document.getElementById("updateModal"));
 
-      window.location.reload();
+      modal.hide();
     } catch (error) {
       toast.error("Update failed");
     }
@@ -55,6 +56,15 @@ const BlogTable = ({ blogs, fetchBlogs, handleDelete }) => {
               <div className="col-md-6 col-lg-4" key={blog.id}>
                 <div className="card h-100 shadow-sm">
                   <div className="card-body d-flex flex-column">
+                    <img
+                      src={`http://localhost:4000/${blog.image}`}
+                      alt={blog.title}
+                      className="card-img-top"
+                      style={{
+                        height: 220,
+                        objectFit: "cover",
+                      }}
+                    />
                     <h5 className="card-title">{blog.title}</h5>
 
                     <p className="text-muted mb-2">
@@ -76,6 +86,8 @@ const BlogTable = ({ blogs, fetchBlogs, handleDelete }) => {
                     >
                       {blog.description}
                     </p>
+
+                    
 
                     <div className="d-flex justify-content-between mt-auto pt-3">
                       <button
@@ -112,6 +124,7 @@ const BlogTable = ({ blogs, fetchBlogs, handleDelete }) => {
             <div className="modal-body">
               {selectedBlog && (
                 <BlogForm
+                  key={selectedBlog?.id}
                   defaultValues={selectedBlog}
                   onSubmit={handleUpdate}
                   buttonText="Update Blog"

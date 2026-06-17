@@ -33,8 +33,9 @@ const AddNewBlog = () => {
             </h2>
 
             <BlogForm
-              handleAddBlog={handleAddBlog}
-            />
+    onSubmit={handleAddBlog}
+    buttonText="Add Blog"
+/>
 
           </div>
         </div>

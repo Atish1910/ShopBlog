@@ -1,29 +1,69 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-const BlogForm = ({ defaultValues, handleAddBlog}) => {
-  const { register, handleSubmit,reset } = useForm();
+const BlogForm = ({ defaultValues, onSubmit, buttonText = "Add Blog" }) => {
+  const { register, handleSubmit, reset } = useForm({
+    defaultValues,
+  });
+
+  const handleFormSubmit = (data) => {
+    const formData = new FormData();
+
+    formData.append("title", data.title);
+    formData.append("date", data.date);
+    formData.append("description", data.description);
+
+    if (data.image?.length > 0) {
+      formData.append("image", data.image[0]);
+    }
+
+    if (typeof onSubmit === "function") {
+  onSubmit(formData);
+} else {
+  console.error("onSubmit prop is missing");
+}
+  };
+
+  useEffect(() => {
+    if (defaultValues) {
+      reset(defaultValues);
+    }
+  }, [defaultValues, reset]);
 
   return (
-    <form onSubmit={handleSubmit(handleAddBlog)}>
+    <form onSubmit={handleSubmit(handleFormSubmit)}>
       <input
         className="form-control mb-3"
         placeholder="Title"
-        {...register("title",{required : true})}
+        {...register("title", { required: true })}
       />
 
       <input
         className="form-control mb-3"
         placeholder="Date"
-        {...register("date",{required : true})}
+        {...register("date", { required: true })}
       />
 
       <textarea
         className="form-control mb-3"
         rows="4"
         placeholder="Description"
-        {...register("description",{ required : true})}
+        {...register("description", { required: true })}
       />
-      <button className="btn btn-primary w-100">Add Blog</button>
+      <input
+        type="file"
+        className="form-control mb-3"
+        accept="image/*"
+        {...register("image")}
+      />
+      <img
+        src={`http://localhost:4000/${defaultValues?.image}`}
+        alt="Blog"
+        width={150}
+        className="mb-3 rounded"
+      />
+
+      <button className="btn btn-primary w-100">{buttonText}</button>
     </form>
   );
 };

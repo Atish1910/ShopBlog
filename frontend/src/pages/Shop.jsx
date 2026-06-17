@@ -23,19 +23,16 @@ function Shop() {
   }, [products, debouncing, category]);
 
   const fetchProducts = async () => {
-    setLoading(true);
-
-    const response = await getProducts();
-
-    if (response.success) {
+    try {
+      setLoading(true);
+      const response = await getProducts();
       setProducts(response.data);
-
-      toast.success(`${response.data.length} Products Loaded`);
-    } else {
-      toast.error(response.message);
+      setLoading(false);
+      
+    } catch (error) {
+      toast.error(error.message);
+      console.log("error to fetch data from api");
     }
-
-    setLoading(false);
   };
 
   const filterProducts = () => {

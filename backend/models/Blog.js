@@ -6,6 +6,10 @@ const Blog = sequelize.define("Blog", {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    image:{
+        type: DataTypes.STRING,
+        allowNull:false
+    },
     date: {
         type: DataTypes.TEXT,
         allowNull: false,
