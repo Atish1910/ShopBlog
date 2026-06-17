@@ -6,6 +6,7 @@ import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
 import BlogListPage from "./pages/BlogListPage";
 import AddNewBlog from "./pages/AddNewBlog";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/blog" element={<BlogListPage />} />
         <Route path="/add-blog" element={<AddNewBlog />} />
+        <Route path="*" element={<NotFound/>}></Route>
       </Routes>
     </BrowserRouter>
   );

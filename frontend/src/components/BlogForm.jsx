@@ -18,10 +18,10 @@ const BlogForm = ({ defaultValues, onSubmit, buttonText = "Add Blog" }) => {
     }
 
     if (typeof onSubmit === "function") {
-  onSubmit(formData);
-} else {
-  console.error("onSubmit prop is missing");
-}
+      onSubmit(formData);
+    } else {
+      console.error("onSubmit prop is missing");
+    }
   };
 
   useEffect(() => {
@@ -55,12 +55,6 @@ const BlogForm = ({ defaultValues, onSubmit, buttonText = "Add Blog" }) => {
         className="form-control mb-3"
         accept="image/*"
         {...register("image")}
-      />
-      <img
-        src={`http://localhost:4000/${defaultValues?.image}`}
-        alt="Blog"
-        width={150}
-        className="mb-3 rounded"
       />
 
       <button className="btn btn-primary w-100">{buttonText}</button>
