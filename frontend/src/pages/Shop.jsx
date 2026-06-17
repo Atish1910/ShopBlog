@@ -83,8 +83,6 @@ function Shop() {
         </div>
       </div>
 
-      {/* Loader */}
-
       {loading ? (
         <div className="text-center mt-5">
           <div className="spinner-border" role="status"></div>

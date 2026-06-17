@@ -7,11 +7,6 @@ import BlogForm from "../components/BlogForm";
 const AddNewBlog = () => {
   const navigate = useNavigate();
 
-  const defaultValues = {
-    title: "",
-    date: "",
-    description: "",
-  };
 
   const handleAddBlog = async (data) => {
     debugger
@@ -30,18 +25,19 @@ const AddNewBlog = () => {
 
   return (
     <div className="container py-5">
-      <div className="card shadow p-4">
+      <div className="row justify-content-center">
+        <div className="col-lg-8">
+          <div className="card shadow p-4">
+            <h2 className="mb-4">
+              Add New Blog
+            </h2>
 
-        <h2 className="mb-4">
-          Add New Blog
-        </h2>
+            <BlogForm
+              handleAddBlog={handleAddBlog}
+            />
 
-        <BlogForm
-          defaultValues={defaultValues}
-          onSubmit={handleAddBlog}
-          buttonText="Add Blog"
-        />
-
+          </div>
+        </div>
       </div>
     </div>
   );

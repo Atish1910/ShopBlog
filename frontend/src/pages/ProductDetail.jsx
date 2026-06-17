@@ -15,17 +15,18 @@ function ProductDetail() {
   }, [id]);
 
   const fetchProductDetails = async () => {
-    setLoading(true);
-
-    const response = await getProductById(id);
-
-    if (response.success) {
-      setProduct(response.data);
-    } else {
-      toast.error(response.message);
+    try {
+      setLoading(true);
+      const response = await getProductById(id);
+      if (response.success) {
+        setProduct(response.data);
+      } else {
+        toast.error(response.message);
+      }
+      setLoading(false);
+    } catch (error) {
+      toast.error(error.message);
     }
-
-    setLoading(false);
   };
 
   if (loading) {
@@ -47,8 +48,6 @@ function ProductDetail() {
   return (
     <div className="container py-5">
       <div className="row align-items-center product-detail-wrapper">
-        {/* Product Image */}
-
         <div className="col-md-5 mb-4">
           <div className="product-image-box">
             <img
@@ -59,23 +58,16 @@ function ProductDetail() {
           </div>
         </div>
 
-        {/* Product Info */}
-
         <div className="col-md-7">
           <span className="badge bg-primary mb-3">{product.category}</span>
-
           <h2 className="product-title">{product.title}</h2>
-
           <h3 className="product-price text-success my-3">${product.price}</h3>
-
           <p className="product-description">{product.description}</p>
-
           <div className="rating-box mb-4">
             <span className="badge bg-warning text-dark me-2">
-              ⭐ {product.rating.rate}
+              {product.rating.rate}
             </span>
-
-            <span className="text-muted">({product.rating.count} Reviews)</span>
+            <span className="text-muted">{product.rating.count} Reviews</span>
           </div>
         </div>
       </div>

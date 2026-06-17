@@ -1,43 +1,29 @@
 import { useForm } from "react-hook-form";
 
-const BlogForm = ({
-  defaultValues,
-  onSubmit,
-  buttonText,
-}) => {
-  const { register, handleSubmit } = useForm({
-    defaultValues,
-  });
+const BlogForm = ({ defaultValues, handleAddBlog}) => {
+  const { register, handleSubmit,reset } = useForm();
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-
+    <form onSubmit={handleSubmit(handleAddBlog)}>
       <input
         className="form-control mb-3"
         placeholder="Title"
-        {...register("title")}
+        {...register("title",{required : true})}
       />
 
-      <textarea
+      <input
         className="form-control mb-3"
-        rows="4"
         placeholder="Date"
-        {...register("date")}
+        {...register("date",{required : true})}
       />
 
       <textarea
         className="form-control mb-3"
         rows="4"
         placeholder="Description"
-        {...register("description")}
+        {...register("description",{ required : true})}
       />
-
-      <button
-        className="btn btn-primary w-100"
-      >
-        {buttonText}
-      </button>
-
+      <button className="btn btn-primary w-100">Add Blog</button>
     </form>
   );
 };
