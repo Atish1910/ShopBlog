@@ -3,19 +3,15 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 import BlogForm from "../components/BlogForm";
+import { createBlog } from "../services/blogService";
 
 const AddNewBlog = () => {
   const navigate = useNavigate();
 
-
   const handleAddBlog = async (data) => {
-    debugger
+    debugger;
     try {
-      await axios.post(
-        "http://localhost:4000/api/blogs",
-        data
-      );
-
+      await createBlog(data);
       toast.success("Blog Added Successfully");
       navigate("/blog");
     } catch (error) {
@@ -28,15 +24,9 @@ const AddNewBlog = () => {
       <div className="row justify-content-center">
         <div className="col-lg-8">
           <div className="card shadow p-4">
-            <h2 className="mb-4">
-              Add New Blog
-            </h2>
+            <h2 className="mb-4">Add New Blog</h2>
 
-            <BlogForm
-    onSubmit={handleAddBlog}
-    buttonText="Add Blog"
-/>
-
+            <BlogForm onSubmit={handleAddBlog} buttonText="Add Blog" />
           </div>
         </div>
       </div>

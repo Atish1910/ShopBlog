@@ -5,13 +5,13 @@ const Blog = require("../models/Blog");
 // Create Blog
 exports.createBlog = async (req, res) => {
   try {
-    const { title, date, description } = req.body;
+    const { title, date, description } = req.body; // data collect from input
 
     const blog = await Blog.create({
       title,
       date,
       description,
-      image: req.file ? req.file.path : null,
+      image: req.file ? req.file.path : null, // image
     });
 
     res.status(201).json({
@@ -102,7 +102,6 @@ exports.getBlogById = async (req, res) => {
   }
 };
 
-// Delete Blog
 // Delete Blog
 exports.deleteBlog = async (req, res) => {
   try {

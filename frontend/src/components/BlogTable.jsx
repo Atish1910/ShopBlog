@@ -5,6 +5,7 @@ import { Modal } from "bootstrap";
 import { useNavigate } from "react-router-dom";
 
 import BlogForm from "./BlogForm";
+import { updateBlog } from "../services/blogService";
 
 const BlogTable = ({ blogs, fetchBlogs, handleDelete }) => {
   const navigate = useNavigate();
@@ -21,11 +22,7 @@ const BlogTable = ({ blogs, fetchBlogs, handleDelete }) => {
 
   const handleUpdate = async (data) => {
     try {
-      await axios.put(
-        `http://localhost:4000/api/blogs/${selectedBlog.id}`,
-        data,
-      );
-
+      await updateBlog(id);
       toast.success("Blog Updated");
       await fetchBlogs();
 

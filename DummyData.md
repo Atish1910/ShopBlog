@@ -9,3 +9,4 @@ Protect your online accounts by using strong passwords, enabling two-factor auth
 Future Trends in Technology 
 15 May 2026 
 Technologies like AI, cloud computing, blockchain, and IoT are shaping the future. This article highlights the latest trends to watch.
+

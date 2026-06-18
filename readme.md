@@ -5,13 +5,14 @@ A full-stack web application built with **React**, **Node.js**, **Express**, and
 ---
 
 ## 🚀 Tech Stack
+Developed using React, Express, MySQL, and Bootstrap.
 
 ### Frontend
 
 * React
 * React Router DOM
 * React Hook Form
-* Bootstrap
+* Bootstrap (i am familer with this css framework)
 * Axios
 
 ### Backend
@@ -27,7 +28,6 @@ A full-stack web application built with **React**, **Node.js**, **Express**, and
 * Cors
 * Multer
 * Morgan
-* Helmet
 * Sequelize
 * MySQL2
 
@@ -42,7 +42,6 @@ A full-stack web application built with **React**, **Node.js**, **Express**, and
 * Fetch products from a Public API
 * Product Listing
 * Search Products
-* Category Filter
 * Category-wise Routing
 * Product Details Page
 * Responsive UI using Bootstrap
@@ -73,7 +72,6 @@ A full-stack web application built with **React**, **Node.js**, **Express**, and
 * Single Image Upload using Multer
 * Images stored inside `uploads/`
 * Image path saved in MySQL
-* Old image removed while updating/deleting
 
 ### Database
 
@@ -129,7 +127,7 @@ npm run dev
 Runs on:
 
 ```
-http://localhost:5173
+http://localhost:4200
 ```
 
 ---
@@ -139,7 +137,7 @@ http://localhost:5173
 ```bash
 cd backend
 npm install
-npm start
+npm run dev
 ```
 
 Runs on:
@@ -177,44 +175,4 @@ DB_NAME=your_database
 
 ---
 
-# Image Upload
 
-Uploaded images are stored inside:
-
-```
-backend/uploads
-```
-
-Images are served using:
-
-```
-http://localhost:4000/uploads/image-name.jpg
-```
-
----
-
-# Frontend Libraries
-
-* react
-* react-router-dom
-* react-hook-form
-* axios
-* bootstrap
-
----
-
-# Backend Libraries
-
-* express
-* cors
-* multer
-* sequelize
-* mysql2
-* helmet
-* morgan
-
----
-
-## Author
-
-Developed using React, Express, MySQL, and Bootstrap.
