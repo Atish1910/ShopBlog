@@ -21,17 +21,12 @@ const BlogTable = ({ blogs, fetchBlogs, handleDelete }) => {
   };
 
   const handleUpdate = async (data) => {
-    try {
-      await updateBlog(id);
+      await updateBlog(selectedBlog.id,data);
       toast.success("Blog Updated");
       await fetchBlogs();
-
       const modal = Modal.getInstance(document.getElementById("updateModal"));
-
       modal.hide();
-    } catch (error) {
-      toast.error("Update failed");
-    }
+    
   };
 
   return (

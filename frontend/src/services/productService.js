@@ -5,7 +5,6 @@ const API_URL = "https://fakestoreapi.com/products";
 export const getProducts = async () => {
   try {
     const response = await axios.get(API_URL);
-
     return {
       success: true,
       data: response.data,
@@ -20,10 +19,7 @@ export const getProducts = async () => {
 
 export const getProductById = async (id) => {
   try {
-    const response = await axios.get(
-      `${API_URL}/${id}`
-    );
-
+    const response = await axios.get(`${API_URL}/${id}`);
     return {
       success: true,
       data: response.data,

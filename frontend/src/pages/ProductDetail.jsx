@@ -15,18 +15,10 @@ function ProductDetail() {
   }, [id]);
 
   const fetchProductDetails = async () => {
-    try {
-      setLoading(true);
-      const response = await getProductById(id);
-      if (response.success) {
-        setProduct(response.data);
-      } else {
-        toast.error(response.message);
-      }
-      setLoading(false);
-    } catch (error) {
-      toast.error(error.message);
-    }
+    setLoading(true);
+    const response = await getProductById(id);
+    setProduct(response.data);
+    setLoading(false);
   };
 
   if (loading) {

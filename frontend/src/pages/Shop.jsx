@@ -23,21 +23,14 @@ function Shop() {
   }, [products, debouncing, category]);
 
   const fetchProducts = async () => {
-    try {
       setLoading(true);
       const response = await getProducts();
       setProducts(response.data);
       setLoading(false);
-      
-    } catch (error) {
-      toast.error(error.message);
-      console.log("error to fetch data from api");
-    }
   };
 
   const filterProducts = () => {
     let updatedProducts = [...products];
-
     if (debouncing) {
       updatedProducts = updatedProducts.filter((product) =>
         product.title.toLowerCase().includes(debouncing.toLowerCase()),

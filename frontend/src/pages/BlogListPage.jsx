@@ -15,16 +15,9 @@ const BlogListPage = () => {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this blog?")) return;
-
-    try {
       await deleteBlog(id);
-
       toast.success("Blog Deleted");
-
       fetchBlogs();
-    } catch {
-      toast.error("Delete Failed");
-    }
   };
 
   useEffect(() => {
