@@ -21,12 +21,11 @@ const BlogTable = ({ blogs, fetchBlogs, handleDelete }) => {
   };
 
   const handleUpdate = async (data) => {
-      await updateBlog(selectedBlog.id,data);
-      toast.success("Blog Updated");
-      await fetchBlogs();
-      const modal = Modal.getInstance(document.getElementById("updateModal"));
-      modal.hide();
-    
+    await updateBlog(selectedBlog.id, data);
+    toast.success("Blog Updated");
+    await fetchBlogs();
+    const modal = Modal.getInstance(document.getElementById("updateModal"));
+    modal.hide();
   };
 
   return (
@@ -51,11 +50,7 @@ const BlogTable = ({ blogs, fetchBlogs, handleDelete }) => {
                     <img
                       src={`http://localhost:4000/${blog.image}`}
                       alt={blog.title}
-                      className="card-img-top"
-                      style={{
-                        height: 220,
-                        objectFit: "cover",
-                      }}
+                      className="card-img-top w-100"
                     />
                     <h5 className="card-title">{blog.title}</h5>
 
@@ -67,19 +62,7 @@ const BlogTable = ({ blogs, fetchBlogs, handleDelete }) => {
                       <strong>Date:</strong> {blog.date}
                     </p>
 
-                    <p
-                      className="card-text flex-grow-1"
-                      style={{
-                        overflow: "hidden",
-                        display: "-webkit-box",
-                        WebkitLineClamp: 4,
-                        WebkitBoxOrient: "vertical",
-                      }}
-                    >
-                      {blog.description}
-                    </p>
-
-                    
+                    <p className="card-text flex-grow-1">{blog.description}</p>
 
                     <div className="d-flex justify-content-between mt-auto pt-3">
                       <button
